@@ -2,7 +2,7 @@ package com.howtodoinjava.demo.lucene.file;
  
 import java.io.IOException;
 import java.nio.file.Paths;
- 
+import java.util.Scanner;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -24,9 +24,11 @@ public class LuceneReadIndexFromFileExample
     {
         //Create lucene searcher. It search over a single IndexReader.
         IndexSearcher searcher = createSearcher();
-         
+        Scanner sc = new Scanner(System.in);
         //Search indexed contents using search term
-        TopDocs foundDocs = searchInContent("city", searcher);
+        System.out.println("Enter the query to be searched");
+        String input = sc.nextLine();
+        TopDocs foundDocs = searchInContent(input, searcher);
          
         //Total found documents
         System.out.println("Total Results :: " + foundDocs.totalHits);
