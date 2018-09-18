@@ -29,11 +29,11 @@ public class LuceneReadIndexFromFileExample
         System.out.println("Enter the query to be searched");
         String input = sc.nextLine();
         TopDocs foundDocs = searchInContent(input, searcher);
-         
         //Total found documents
         System.out.println("Total Results :: " + foundDocs.totalHits);
          
         //Let's print out the path of files which have searched term
+        double tp = 0;
         for (ScoreDoc sd : foundDocs.scoreDocs)
         {
             Document d = searcher.doc(sd.doc);
